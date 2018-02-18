@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Container from './components/Container/Container';
 import '../styles/site';
 import ChatWindow from './ChatWindow/ChatWindow';
 import socketClient from 'socket.io-client';
