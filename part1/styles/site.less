@@ -1,10 +1,61 @@
 // Insert your styles here, using LESS
 
-body {
+/*body {
     background-image: url("https://scontent-arn2-1.xx.fbcdn.net/v/t1.0-9/10422071_1532517227035975_5953709268737394168_n.jpg?oh=2157bf705e7dd65e1e28739ff9fb3b5a&oe=5B07CDF7");
     .container {
       width:768px;
       margin: 0 auto;
       background-color: gray;
     }
+}*/
+
+body {
+    .container {
+        width: 768px;
+        margin: 0 auto;
+        .chat-window {
+            position: relative;
+            height: 480px;
+            width: 640px;
+            background-color: rgba(155, 155, 155, .1);
+            box-shadow: 2px 2px 10px rgba(155, 155, 155, .2);
+            margin-right: 0px;
+            .input-box {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                height: 30px;
+                .input {
+                    &.input-big {
+                        width: 89%;
+                        font-size: 1.2em;
+                    }
+                }
+                .btn {
+                    border-radius: 0px;
+                    font-size: 1.2em;
+                    background-color: rgba(50, 200, 50, .6);
+                    color: white;
+                }
+            }
+        }
+        .chat-channel-list {
+          height: 480px;
+          width: 110px;
+          background-color: green;
+          box-shadow: 2px 2px 10px rgba(155, 155, 155, .2);
+
+        }
+        .chat-user-list{
+          height: 480px;
+          width: 110px;
+          background-color: green;
+          box-shadow: 2px 2px 10px rgba(155, 155, 155, .2);
+        }
+    }
+    .pull-right {
+        float: right;
+    }
+
 }
