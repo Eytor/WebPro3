@@ -1,17 +1,29 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import '../styles/site';
+import ChatWindow from './ChatWindow/ChatWindow';
+import socketClient from 'socket.io-client';
 
 class App extends React.Component {
+    componentDidCatch(error, info) {
+        console.log(error, info)
+    }
+    getChildContext() {
+        socket: socketClient('http://localhost:3000')
+    };
+
+
     constructor(props) {
         super(props);
     }
+
+
+
     render() {
         return (
-            <div>I am the Ass</div>
+            <ChatWindow />
         );
-    }
-}
-
+    };
+};
 
 ReactDOM.render(<App />, document.getElementById('app'));
