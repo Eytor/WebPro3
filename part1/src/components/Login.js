@@ -1,43 +1,59 @@
-import React from 'react';
+import React, { Component } from 'react';
+import {VERIFY_USER} from '../Events';
 
-class Login extends React.Component {
+export default class Login extends Component {
+
   constructor(props) {
     super(props);
-
     this.state = {
-      nickname:"",
-      error:""
+      nickname:'',
+      error:''
     };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.setUser = this.setUser.bind(this);
   }
 
-  handleSubmit = (e)=>{
+  setUser({user, isUser}) {
+    console.log(user, isUer);
+    if (isUser) {
+      this.setError('User name taken')
+    }
+    else {
+      this.props.setUser(user)
+    }
+  }
+
+  handleSubmit(e) {
     e.preventDefault()
-
-
+    const { socket } = this.props
+    const { nickname } = this.state
+    socket.emit(VERIFY_USER, nickname, this.setUser)
   }
 
-  handleChange = ()=>{
-
+  handleChange(e) {
+      this.setState({nickname:e.target.value})
   }
-    render() {
-      const { nickname, error} = this.state
-        return (
-            <div className="login">
-              <form onSubmit={this.handleSubmit} className="login-form">
-                <lable for="nickname"><h2>please type in nickname</h2></lable>
-                <input
-                  ref={(input)=>{this.textInput = input}}
-                  type="text"
-                  id="nickname"
-                  value={nickname}
-                  onchange={this.handleChange}
-                  placeholder={'Username'}
-                />
-              </form>
-            </div>
-            <div className="error">{error ? error:null}</div>
-        )
-    };
+
+  render() {
+    const { nickname, error} = this.state
+      return (
+          <div className="login">
+            <form onSubmit={ this.handleSubmit } className="login-form">
+              <label htmlFor="nickname"><h2>please type in nickname</h2></label>
+              <input
+                ref={ (input)=> { this.textInput = input } }
+                type="text"
+                id="nickname"
+                value={nickname}
+                onChange={this.handleChange}
+                placeholder={'Username'}
+              />
+              <div className="error">{error ? error:null}</div>
+            </form>
+          </div>
+      )
+  };
 };
 
-export default Login;
+//export default Login;

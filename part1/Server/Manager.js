@@ -2,7 +2,7 @@ const io = require('./index.js').io
 
 const  {VERIFY_USER, USER_CONNECTED, LOGOUT} = require('../Events')
 
-const {createUser, createMessage, creatChat} = require('../settings')
+//const {createUser, createMessage, creatChat} = require('../settings')
 
 const connectedUser = {}
 
@@ -27,4 +27,20 @@ module.exports = function(socket) {
       console.log(connectedUsers);
     })
 
+}
+
+function addUser(userList, user) {
+  let newList = Object.assign({}, userList)
+  newList[user.name] = user
+  return newList
+}
+
+function removeUser(userList, userName) {
+  let newList = Object.assign({}, userList)
+  delete newList[userName]
+  return newList
+}
+
+function isUser(userList, userName) {
+  return userName in userList;
 }

@@ -28,6 +28,7 @@ class ChatWindow extends React.Component {
   render() {
       const { messages, msg } = this.state;
         return (
+
             <div className="chat-window">
                 {messages.map(m => ( <div key={m}>{m}</div> ))}
                 <div className="input-box">
@@ -39,6 +40,7 @@ class ChatWindow extends React.Component {
                     <button type="button" className="btn pull-right" onClick={() => this.sendMessage()}>Send</button>
                 </div>
             </div>
+
         );
     }
 };

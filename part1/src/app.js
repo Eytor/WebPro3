@@ -1,12 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Container from './components/Container/Container';
+//import Container from './components/Container/Container';
 import {PropTypes} from 'prop-types';
 import '../styles/site';
-import ChatWindow from './ChatWindow/ChatWindow';
+//import ChatWindow from './ChatWindow/ChatWindow';
 import socketClient from 'socket.io-client';
-import ChatChannelList from './ChatWindow/ChatChannelList';
-import ChatUserList from './ChatWindow/ChatUserList';
+//import ChatChannelList from './ChatWindow/ChatChannelList';
+//import ChatUserList from './ChatWindow/ChatUserList';
+import MainWindow from './MainWindow/MainWindow';
 
 class App extends React.Component {
     componentDidCatch(error, info) {
@@ -22,11 +23,7 @@ class App extends React.Component {
     }
     render() {
         return (
-            <Container>
-              <ChatChannelList />
-              <ChatWindow />
-              <ChatUserList />
-            </Container>
+            <MainWindow />
         );
     };
 };
